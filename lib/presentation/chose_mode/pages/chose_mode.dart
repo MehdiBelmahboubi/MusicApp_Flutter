@@ -1,9 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:music_app_flutter/common/widgets/button/basic_app_button.dart';
 import 'package:music_app_flutter/core/configs/assets/app_images.dart';
 import 'package:music_app_flutter/core/configs/assets/app_vectors.dart';
+import 'package:music_app_flutter/presentation/auth/pages/signup_signin.dart';
+import 'package:music_app_flutter/presentation/chose_mode/bloc/theme_cubit.dart';
 
 class ChoseModePage extends StatelessWidget {
   const ChoseModePage({Key? key}) : super(key: key);
@@ -15,7 +18,7 @@ class ChoseModePage extends StatelessWidget {
         children: [
           // Background image or color
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: AssetImage(AppImages.choseModeImage),
@@ -33,8 +36,8 @@ class ChoseModePage extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  SizedBox(height: 50), // Add some space from the top
-                  Text(
+                  const SizedBox(height: 50), // Add some space from the top
+                  const Text(
                     'Chose Mode',
                     style: TextStyle(
                       color: Colors.white,
@@ -42,53 +45,63 @@ class ChoseModePage extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 30), // Add some space between the texts
+                  const SizedBox(height: 30), // Add some space between the texts
                  Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Column(
                       children: [
-                        ClipOval(
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                            child: Container(
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                color: Color(0xff30393C).withOpacity(0.5),
-                                shape: BoxShape.circle
+                        GestureDetector(
+                          onTap: () =>{
+                            context.read<ThemeCubit>().updateTheme(ThemeMode.dark)
+                          } ,
+                          child: ClipOval(
+                            child: BackdropFilter(
+                              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                              child: Container(
+                                height: 80,
+                                width: 80,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xff30393C).withOpacity(0.5),
+                                  shape: BoxShape.circle
+                                ),
+                                child: Image.asset(AppVectors.moon),
                               ),
-                              child: Image.asset(AppVectors.moon),
                             ),
                           ),
                         ),
-                        SizedBox(height: 15),
-                        Text('Dark Mode', style: 
+                        const SizedBox(height: 15),
+                        const Text('Dark Mode', style: 
                           TextStyle(fontWeight: FontWeight.w500,
                             fontSize: 17,
                             color: Colors.white
                         )),
                       ],
                     ),
-                    SizedBox(width: 80),
+                    const SizedBox(width: 80),
                      Column(
-                       children: [
-                         ClipOval(
+                      children: [
+                        GestureDetector(
+                          onTap: () =>{
+                            context.read<ThemeCubit>().updateTheme(ThemeMode.light)
+                          } ,
+                          child: ClipOval(
                           child: BackdropFilter(
                             filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                             child: Container(
                               height: 80,
                               width: 80,
                               decoration: BoxDecoration(
-                                color: Color(0xff30393C).withOpacity(0.5),
+                                color: const Color(0xff30393C).withOpacity(0.5),
                                 shape: BoxShape.circle
                               ),
                               child: Image.asset(AppVectors.sun),
                             ),
+                           ),
                           ),
                          ),
-                         SizedBox(height: 15),
-                         Text('Light Mode', style: 
+                         const SizedBox(height: 15),
+                         const Text('Light Mode', style: 
                           TextStyle(fontWeight: FontWeight.w500,
                             fontSize: 17,
                             color: Colors.white
@@ -103,7 +116,12 @@ class ChoseModePage extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: BasicAppButton(
                   onPressed: () {
-                    // Add your onPressed logic here
+                   Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => SignupSigninPage(),
+                      ),
+                    );
                   },
                   title: 'Continue',
                   textColor: Colors.blue,
