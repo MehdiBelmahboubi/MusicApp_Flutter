@@ -46,8 +46,8 @@ class GetStartedPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Text(
-                    'Experience the best music from around the world. '
-                    'Join us and enjoy a seamless musical journey.',
+                    'Discover a world of endless melodies and rhythms. '
+                    'Join us today and let the music inspire your every moment.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -66,8 +66,8 @@ class GetStartedPage extends StatelessWidget {
                     );
                   },
                   title: 'Get Started',
-                  textColor: Colors.blue,
-                  backgroundColor: Colors.white,
+                  textColor: Colors.white,
+                  backgroundColor: Colors.blue,
                 ),
               ],
             ),

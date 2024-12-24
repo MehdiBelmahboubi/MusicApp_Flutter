@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:music_app_flutter/common/widgets/button/basic_app_button.dart';
 import 'package:music_app_flutter/core/configs/assets/app_images.dart';
 import 'package:music_app_flutter/core/configs/assets/app_vectors.dart';
+import 'package:music_app_flutter/presentation/auth/pages/signin.dart';
+import 'package:music_app_flutter/presentation/auth/pages/signup.dart';
 import 'package:music_app_flutter/presentation/chose_mode/pages/chose_mode.dart';
 
 class SignupSigninPage extends StatelessWidget {
@@ -36,7 +38,7 @@ class SignupSigninPage extends StatelessWidget {
                 Text(
                   'Welcome to Music App',
                   style: TextStyle(
-                    color: const Color.fromARGB(255, 41, 125, 194),
+                    color: const Color.fromARGB(255, 14, 92, 157),
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -62,18 +64,28 @@ class SignupSigninPage extends StatelessWidget {
                     children: [
                       BasicAppButton(
                         onPressed: () {
-                          
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => SignupPage()
+                            ),
+                          );
                         },
                         title: 'Register',
                         textColor: Colors.white,
-                        backgroundColor: Colors.blue,
+                        backgroundColor: const Color.fromARGB(255, 14, 92, 157),
                       ),
                       BasicAppButton(
                         onPressed: () {
-                          // Add your onPressed logic for Sign In here
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => SigninPage()
+                            ),
+                          );
                         },
                         title: 'Sign In',
-                        textColor: Colors.blue,
+                        textColor: const Color.fromARGB(255, 14, 92, 157),
                         backgroundColor: Colors.white,
                       ),
                     ],
