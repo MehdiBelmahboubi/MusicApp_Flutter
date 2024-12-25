@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:music_app_flutter/common/widgets/button/basic_app_button.dart';
 import 'package:music_app_flutter/core/configs/assets/app_vectors.dart';
+import 'package:music_app_flutter/data/models/auth/create_user_request.dart';
+import 'package:music_app_flutter/domain/usecases/auth/signup.dart';
 import 'package:music_app_flutter/presentation/auth/pages/signin.dart';
+import 'package:music_app_flutter/presentation/root/pages/root.dart';
+import 'package:music_app_flutter/service_locator.dart';
 
 class SignupPage extends StatelessWidget {
   SignupPage({super.key});
@@ -40,7 +44,36 @@ class SignupPage extends StatelessWidget {
               const SizedBox(height: 30),
               BasicAppButton(
                 onPressed: () async {
-                  // Action à effectuer lorsque le bouton est pressé
+                  var result = await sl<SignupUseCase>().call(
+                    params: CreateUserRequest(
+                      fullName: _fullName.text,
+                      email: _email.text,
+                      password: _password.text,
+                    ),
+                  );
+                  result.fold(
+                    (error) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(error),
+                        ),
+                      );
+                    },
+                    (success) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(success),
+                        ),
+                      );
+                      Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) => SigninPage()
+                            ),
+                            (route) => false
+                      );
+                    },
+                  );
                 },
                 title: 'Create Account',
               ),
