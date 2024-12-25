@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "577440510376",
+    "project_id": "my-app-flutter-nota",
+    "storage_bucket": "my-app-flutter-nota.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577440510376:android:0ed96e73fa4e2e7f576d9d",
+        "android_client_info": {
+          "package_name": "com.example.music_app_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh2G9jkBGYZsqCbVuN2SbsthTxNP2p7o8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
