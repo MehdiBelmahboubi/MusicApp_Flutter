@@ -4,6 +4,7 @@ import 'package:music_app_flutter/core/configs/assets/app_vectors.dart';
 import 'package:music_app_flutter/data/models/auth/signin_user_request.dart';
 import 'package:music_app_flutter/domain/usecases/auth/signin.dart';
 import 'package:music_app_flutter/presentation/auth/pages/signup.dart';
+import 'package:music_app_flutter/presentation/home/pages/home.dart';
 import 'package:music_app_flutter/presentation/root/pages/root.dart';
 import 'package:music_app_flutter/service_locator.dart';
 
@@ -65,7 +66,7 @@ class SigninPage extends StatelessWidget {
                       Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                              builder: (BuildContext context) => RootPage()
+                              builder: (BuildContext context) => HomePage()
                             ),
                             (route) => false
                       );
